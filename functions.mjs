@@ -37,6 +37,19 @@ function processTodayWeatherData(response) {
         }
         console.log(data);
         console.log(currentWeather);
+
+        const hourlyForecasts = [];
+        for (const hourInfo of data['forecast']['forecastday'][0]['hour']) {
+            const timeOfDay = hourInfo['time'];
+            const dateObject = new Date(timeOfDay);
+            hourlyForecasts.push({
+                condition: hourInfo['condition']['text'],
+                tempC: hourInfo['temp_c'],
+                tempF: hourInfo['temp_f'],
+                time: dateObject.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+            })
+        }
+        console.log(hourlyForecasts);
     })
 }
 
