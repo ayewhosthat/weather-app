@@ -18,27 +18,25 @@ async function getWeatherForecast(city) {
 function processTodayWeatherData(response) {
     // now we get the information we want to display for our app and process it
     // maybe return a custom object????
+    const currentWeather = {};
+    const hourlyForecasts = [];
     response.then((data) => {
         const localTime = data['location']['localtime'];
-        const dateObject = new Date(localTime);
-        const currentWeather = {
-            currentTempC: data['current']['temp_c'],
-            currentTempF: data['current']['temp_f'],
-            feelsLikeC: data['current']['feelslike_c'],
-            feelsLikeF: data['current']['feelslike_f'],
-            humidity: data['current']['humidity'] + '%',
-            condition: data['current']['condition']['text'],
-            uv: data['current']['uv'],
-            windSpeed: data['current']['wind_kph'] + 'kph',
-            windDirection: data['current']['wind_dir'],
-            cityName: data['location']['name'],
-            date: Date(data['location']['localtime']).toString().split(' ').slice(0, 3).join(' '),
-            time: dateObject.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
-        }
-        console.log(data);
-        console.log(currentWeather);
+        const dateObject = new Date(localTime); 
+        currentWeather['currentTempC'] = data['current']['temp_c']
+        currentWeather['currentTempF'] = data['current']['temp_f']
+        currentWeather['feelsLikeC'] = data['current']['feelslike_c']
+        currentWeather['feelsLikeF'] = data['current']['feelslike_f']
+        currentWeather['humidity'] = data['current']['humidity'] + '%'
+        currentWeather['condition'] = data['current']['condition']['text']
+        currentWeather['uv'] = data['current']['uv']
+        currentWeather['windSpeed'] = data['current']['wind_kph'] + ' km/h'
+        currentWeather['windDirection'] = data['current']['wind_dir']
+        currentWeather['cityName'] = data['location']['name']
+        currentWeather['date'] = Date(data['location']['localtime']).toString().split(' ').slice(0, 3).join(' ')
+        currentWeather['time'] = dateObject.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+        
 
-        const hourlyForecasts = [];
         for (const hourInfo of data['forecast']['forecastday'][0]['hour']) {
             const timeOfDay = hourInfo['time'];
             const dateObject = new Date(timeOfDay);
@@ -49,8 +47,11 @@ function processTodayWeatherData(response) {
                 time: dateObject.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
             })
         }
-        console.log(hourlyForecasts);
     })
+    return {
+        hourly: hourlyForecasts,
+        current: currentWeather
+    }
 }
 
 export { getWeatherData, getWeatherForecast, processTodayWeatherData };
