@@ -21,9 +21,17 @@ body {
     grid-template-columns: repeat(8, 1fr);
 }
 
+.daily > div {
+    min-width: 170px;
+}
+
 .hourly {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+}
+
+.hourly > div {
+    min-width: 180px;
 }
 
 .text-controls {
@@ -44,11 +52,30 @@ body {
     justify-self: center;
 }
 
+.navigation {
+    justify-self: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.arrow {
+    display: grid;
+}
+
+.arrow > img {
+    cursor: pointer;
+    align-self: center;
+}
+
+.circles {
+    align-self: center;
+}
+
 .navcircle {
     display: inline-block;
     background-color: black;
     border-radius: 50%;
-    height: 8px;
-    width: 8px;
+    height: 12px;
+    width: 12px;
     cursor: pointer;
 }
