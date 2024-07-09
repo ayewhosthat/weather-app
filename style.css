@@ -1,6 +1,12 @@
+@font-face {
+    font-family: source-sans;
+    src: url('assets/SourceSans3-Regular.ttf');
+}
+
 html, body {height: 100%;}
 
 body {
+    font-family: source-sans;
     margin: 0;
     display: grid;
     grid-template-rows: 3fr 1fr 1fr;
