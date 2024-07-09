@@ -7,14 +7,62 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="top">
-        <div class="left"></div>
-        <div class="middle"></div>
-        <div class="right"></div>
+    <div class="info-container"></div>
+    <div class="daily">
+        <div class="text">
+            <h3 id="daily-weather">7-Day Forecast</h3>
+        </div>
+        <div class="daily-weather">
+            <div class="dayofweek"></div>
+            <div class="temperature-hi-lo"></div>
+            <div class="condition-daily"></div>
+        </div>
+        <div class="daily-weather">
+            <div class="dayofweek"></div>
+            <div class="temperature-hi-lo"></div>
+            <div class="condition-daily"></div>
+        </div>
+        <div class="daily-weather">
+            <div class="dayofweek"></div>
+            <div class="temperature-hi-lo"></div>
+            <div class="condition-daily"></div>
+        </div>
+        <div class="daily-weather">
+            <div class="dayofweek"></div>
+            <div class="temperature-hi-lo"></div>
+            <div class="condition-daily"></div>
+        </div>
+        <div class="daily-weather">
+            <div class="dayofweek"></div>
+            <div class="temperature-hi-lo"></div>
+            <div class="condition-daily"></div>
+        </div>
+        <div class="daily-weather">
+            <div class="dayofweek"></div>
+            <div class="temperature-hi-lo"></div>
+            <div class="condition-daily"></div>
+        </div>
+        <div class="daily-weather">
+            <div class="dayofweek"></div>
+            <div class="temperature-hi-lo"></div>
+            <div class="condition-daily"></div>
+        </div>
     </div>
-    <div class="daily"></div>
-    <div class="hourly"></div>
-    <!-- this will be hidden by default, but the visibility of daily/hourly will be swapped when the user clicks the toggle -->
+    <div class="hourly">
+        <div class="text-controls">
+            <h3 id="hourly-weather">Hourly weather</h3>
+            <div class="navigation">
+                <div class="arrow"></div>
+                <div class="circles">
+                    <span class="navcircle" id="1"></span>
+                    <span class="navcircle" id="2"></span>
+                    <span class="navcircle" id="3"></span>
+                    <span class="navcircle" id="4"></span>
+                </div>
+                <div class="arrow"></div>
+            </div>
+        </div>
+    </div>
     <script type="module" src="./main.mjs"></script>
 </body>
 </html>
