@@ -1,0 +1,48 @@
+html, body {height: 100%;}
+
+body {
+    margin: 0;
+    display: grid;
+    grid-template-rows: 3fr 1fr 1fr;
+}
+
+.info-container, .hourly, .daily {
+    height: 100%;
+}
+
+.daily {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.hourly {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.text-controls {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+#hourly-weather {
+    justify-self: center;
+}
+
+.text {
+    display: grid;
+}
+
+#daily-weather {
+    justify-self: center;
+}
+
+.navcircle {
+    display: inline-block;
+    background-color: black;
+    border-radius: 50%;
+    height: 8px;
+    width: 8px;
+    cursor: pointer;
+}
