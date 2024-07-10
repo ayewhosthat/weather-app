@@ -23,13 +23,13 @@ function processTodayWeatherData(response) {
     response.then((data) => {
         const localTime = data['location']['localtime'];
         const dateObject = new Date(localTime); 
-        currentWeather['currentTempC'] = data['current']['temp_c']
-        currentWeather['currentTempF'] = data['current']['temp_f']
-        currentWeather['feelsLikeC'] = data['current']['feelslike_c']
-        currentWeather['feelsLikeF'] = data['current']['feelslike_f']
+        currentWeather['currentTempC'] = `${data['current']['temp_c']}`
+        currentWeather['currentTempF'] = `${data['current']['temp_f']}`
+        currentWeather['feelsLikeC'] = `${data['current']['feelslike_c']}`
+        currentWeather['feelsLikeF'] = `${data['current']['feelslike_f']}`
         currentWeather['humidity'] = data['current']['humidity'] + '%'
         currentWeather['condition'] = data['current']['condition']['text']
-        currentWeather['uv'] = data['current']['uv']
+        currentWeather['uv'] = `${data['current']['uv']}`
         currentWeather['windSpeed'] = data['current']['wind_kph'] + ' km/h'
         currentWeather['windDirection'] = data['current']['wind_dir']
         currentWeather['cityName'] = data['location']['name']
@@ -60,10 +60,10 @@ function process7DayWeather(response) {
             const day = data['forecast']['forecastday'][i];
             weekWeather.push({
                 condition: day['day']['condition']['text'],
-                maxTempC: day['day']['maxtemp_c'],
-                maxTempF: day['day']['maxtemp_f'],
-                minTempC: day['day']['mintemp_c'],
-                minTempF: day['day']['mintemp_f'],
+                maxTempC: `${day['day']['maxtemp_c']}`,
+                maxTempF: `${day['day']['maxtemp_f']}`,
+                minTempC: `${day['day']['mintemp_c']}`,
+                minTempF: `${day['day']['mintemp_f']}`,
                 date: day['date'],
                 dayOfWeek: new Date(day['date']).toUTCString().split(',')[0]
             })
