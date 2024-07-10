@@ -3,7 +3,7 @@
     src: url('assets/SourceSans3-Regular.ttf');
 }
 
-html, body {height: 100%;}
+html, body {height: 100%; box-sizing: border-box;}
 
 body {
     font-family: source-sans;
@@ -84,6 +84,7 @@ body {
 }
 
 .info-container {
+    min-height: 480px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
