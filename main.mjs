@@ -1,7 +1,11 @@
-import { getWeatherData, getWeatherForecast } from "./functions.mjs";
-let currentCity = 'Mississauga';
+import { getWeatherData, getWeatherForecast, processTodayWeatherData, process7DayWeather } from "./functions.mjs";
 
-const realtime = getWeatherData(currentCity);
-realtime.then(response => console.log(response));
-const forecast = getWeatherForecast(currentCity);
-forecast.then(response => console.log(response));
+let currentCity = 'Mississauga';
+let todaysData = getWeatherData(currentCity);
+let todaysProcessedData = processTodayWeatherData(todaysData);
+
+function displayCurrentWeather() {
+    console.log(todaysProcessedData['current']['condition'])
+}
+
+displayCurrentWeather();
