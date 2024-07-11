@@ -17,7 +17,7 @@ page4.style.display = 'none';
 const moveRight = document.getElementById('move-right');
 moveRight.addEventListener('click', () => {
     currentPage = (currentPage + 1) % 4;
-    console.log(currentPage);
+    updateHourlyDisplay(currentPage);
 });
 
 const moveLeft = document.getElementById('move-left');
@@ -31,5 +31,29 @@ moveLeft.addEventListener('click', () => {
     } else {
         currentPage = 2;
     }
-    console.log(currentPage)
+    updateHourlyDisplay(currentPage);
 ;})
+
+function updateHourlyDisplay(currentPage) {
+    if (currentPage === 0) {
+        page1.style.display = 'grid';
+        page2.style.display = 'none';
+        page3.style.display = 'none';
+        page4.style.display = 'none';
+    } else if (currentPage === 1) {
+        page1.style.display = 'none';
+        page2.style.display = 'grid';
+        page3.style.display = 'none';
+        page4.style.display = 'none';
+    } else if (currentPage === 2) {
+        page1.style.display = 'none';
+        page2.style.display = 'none';
+        page3.style.display = 'grid';
+        page4.style.display = 'none';
+    } else { 
+        page1.style.display = 'none';
+        page2.style.display = 'none';
+        page3.style.display = 'none';
+        page4.style.display = 'grid';
+    }
+}
