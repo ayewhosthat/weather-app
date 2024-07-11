@@ -57,3 +57,14 @@ function updateHourlyDisplay(currentPage) {
         page4.style.display = 'grid';
     }
 }
+
+// add event listeners to 'dots'
+const listOfDots = document.querySelectorAll('span');
+for (let i = 0; i < listOfDots.length; i++) {
+    const dot = listOfDots[i];
+    const pageNumber = Number.parseInt(dot.getAttribute('id'));
+    dot.addEventListener('click', () => {
+        currentPage = pageNumber - 1;
+        updateHourlyDisplay(currentPage);
+    })
+}
