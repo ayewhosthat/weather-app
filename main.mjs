@@ -1,5 +1,5 @@
 import { getWeatherData, getWeatherForecast, processTodayWeatherData, process7DayWeather } from "./functions.mjs";
-let currentCity = 'Phoenix';
+let currentCity = 'Nashville';
 let currentPage = 0; // represents the current 'slide' of the hourly section that we're on
 
 // add event listeners and functions to update the carousel to change what hours we can see 
@@ -13,6 +13,13 @@ page1.style.display = 'grid';
 page2.style.display = 'none';
 page3.style.display = 'none';
 page4.style.display = 'none';
+
+// we let the default display temperature to be celsius, so we set the farenheit boxes to be 'invisible'
+// when the user toggles the switch, we switch the visibility of farenheit/celsius boxes
+const farenheit = document.querySelectorAll('.f');
+for (const elem of farenheit) {
+    elem.style.display = 'none';
+}
 
 const moveRight = document.getElementById('move-right');
 moveRight.addEventListener('click', () => {
@@ -69,9 +76,15 @@ for (let i = 0; i < listOfDots.length; i++) {
     })
 }
 
-async function test() {
-    const data = await getWeatherData(currentCity);
-    const processed = processTodayWeatherData(data);
-    console.log(processed);
+async function updatePage(city) {
+    const todaysData = await getWeatherData(city);
+    const todayProcessed = processTodayWeatherData(todaysData);
+    const weeklyData = await getWeatherForecast(city);
+    const weeklyProcesssed = process7DayWeather(weeklyData);
+
+    // now time to update the DOM elements
+    // CURRENT WEATHER
+    document.getElementById('current-condition-text').textContent = todayProcessed['current']['condition'] // current condition
 }
-test();
+
+// updatePage(currentCity);
