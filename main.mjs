@@ -1,5 +1,5 @@
 import { getWeatherData, getWeatherForecast, processTodayWeatherData, process7DayWeather } from "./functions.mjs";
-let currentCity = 'Mississauga';
+let currentCity = 'Phoenix';
 let currentPage = 0; // represents the current 'slide' of the hourly section that we're on
 
 // add event listeners and functions to update the carousel to change what hours we can see 
@@ -68,3 +68,10 @@ for (let i = 0; i < listOfDots.length; i++) {
         updateHourlyDisplay(currentPage);
     })
 }
+
+async function test() {
+    const data = await getWeatherData(currentCity);
+    const processed = processTodayWeatherData(data);
+    console.log(processed);
+}
+test();
