@@ -1,5 +1,5 @@
 import { getWeatherData, getWeatherForecast, processTodayWeatherData, process7DayWeather } from "./functions.mjs";
-let currentCity = 'Mississauga';
+let currentCity = 'London';
 let currentPage = 0; // represents the current 'slide' of the hourly section that we're on
 
 // add event listeners and functions to update the carousel to change what hours we can see 
@@ -104,6 +104,8 @@ for (let i = 0; i < listOfDots.length; i++) {
     })
 }
 
+const dailyBoxes = document.querySelectorAll('.daily-weather');
+
 async function updatePage(city) {
     const todaysData = await getWeatherData(city);
     const todayProcessed = processTodayWeatherData(todaysData);
@@ -111,6 +113,17 @@ async function updatePage(city) {
     const weeklyProcesssed = process7DayWeather(weeklyData);
 
     // now time to update the DOM elements
+    // DAILY WEATHER
+    for (let i = 0; i < dailyBoxes.length; i++) {
+        const day = weeklyProcesssed[i];
+        const box = dailyBoxes[i];
+        box.querySelector('.dayofweek').textContent = `${day['dayOfWeek']}`;
+        box.querySelector('#high-c').textContent = `Hi: ${day['maxTempC']}°C`;
+        box.querySelector('#low-c').textContent = `Lo: ${day['minTempC']}°C`;
+        box.querySelector('#high-f').textContent = `Hi: ${day['maxTempF']}°F`;
+        box.querySelector('#low-f').textContent = `Lo: ${day['minTempF']}°F`;
+    }
+
     // CURRENT WEATHER
     document.getElementById('current-condition-text').textContent = `Current conditions: ${todayProcessed['current']['condition']}`; // current condition
     document.getElementById('current-uv').textContent = `UV Index:${todayProcessed['current']['uv']}`; // current uv
