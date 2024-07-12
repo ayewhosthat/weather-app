@@ -1,5 +1,5 @@
 import { getWeatherData, getWeatherForecast, processTodayWeatherData, process7DayWeather } from "./functions.mjs";
-let currentCity = 'Nashville';
+let currentCity = 'Mississauga';
 let currentPage = 0; // represents the current 'slide' of the hourly section that we're on
 
 // add event listeners and functions to update the carousel to change what hours we can see 
@@ -112,7 +112,15 @@ async function updatePage(city) {
 
     // now time to update the DOM elements
     // CURRENT WEATHER
-    document.getElementById('current-condition-text').textContent = todayProcessed['current']['condition'] // current condition
+    document.getElementById('current-condition-text').textContent = `Current conditions: ${todayProcessed['current']['condition']}`; // current condition
+    document.getElementById('current-uv').textContent = `UV Index:${todayProcessed['current']['uv']}`; // current uv
+    document.getElementById('current-humidity').textContent = `Humidity: ${todayProcessed['current']['humidity']}`; // current humidity
+    document.getElementById('current-wind').textContent = `Wind: ${todayProcessed['current']['windSpeed']} ${todayProcessed['current']['windDirection']}`;
+    document.getElementById('current-temperature-c').textContent = `${todayProcessed['current']['currentTempC']}°C`;
+    document.getElementById('current-temperature-f').textContent = `${todayProcessed['current']['currentTempF']}°F`;
+    document.getElementById('feelslike-current-c').textContent = `Feels like ${todayProcessed['current']['feelsLikeC']}°C`;
+    document.getElementById('feelslike-current-f').textContent = `Feels like ${todayProcessed['current']['feelsLikeF']}°F`;
+    document.getElementById('location').textContent = `${todayProcessed['current']['cityName']}`;
+    document.getElementById('current-time').textContent = `${todayProcessed['current']['date']}, ${todayProcessed['current']['time']}`;
 }
-
-// updatePage(currentCity);
+updatePage(currentCity);
