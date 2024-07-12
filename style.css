@@ -13,6 +13,7 @@ body {
     display: grid;
     grid-template-rows: 3fr 1fr 1fr;
     padding: 8px;
+    box-sizing: border-box;
 }
 
 .info-container, .hourly, .daily {
@@ -83,11 +84,26 @@ body {
 
 .navcircle {
     display: inline-block;
-    background-color: black;
+    background-color: white;
     border-radius: 50%;
     height: 12px;
     width: 12px;
     cursor: pointer;
+}
+
+.nav-arrow {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.nav-arrow.left-arrow {
+    justify-self: end;
+    margin-right: 8px;
+}
+
+.nav-arrow.right-arrow {
+    justify-self: start;
+    margin-left: 8px;
 }
 
 .info-container {
