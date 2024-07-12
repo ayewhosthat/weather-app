@@ -6,6 +6,7 @@
 html, body {height: 100%; box-sizing: border-box;}
 
 body {
+    color: white;
     background-color: #172554;
     font-family: source-sans;
     margin: 0;
@@ -70,9 +71,10 @@ body {
     display: grid;
 }
 
-.arrow > img {
+.arrow > p {
     cursor: pointer;
     align-self: center;
+    justify-self: center;
 }
 
 .circles {
