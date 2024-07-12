@@ -104,6 +104,11 @@ body {
     justify-content: center;
 }
 
+.temperature-toggle-div {
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
 .left {
     height: 60%;
     display: grid;
@@ -128,4 +133,40 @@ body {
 
 #search-city {
     width: 100%;
+}
+
+#toggle-switch {
+    align-self: center;
+    appearance: none;
+    position: relative; 
+    /* this is so that we can position the circle that shows the toggle absolute to the background */
+    width: 50px;
+    height: 30px;
+    border-radius: 25px;
+    background-color: #ccc;
+    transition: background 0.2s;
+    outline: none;
+    cursor: pointer;
+}
+
+
+#toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    height: 1.25rem;
+    width: 1.25rem;
+    background-color: white;
+    transition: left .3s;
+}
+
+#toggle-switch:checked {
+    background-color: rgb(32, 189, 32);
+}
+
+#toggle-switch:checked::after {
+    left: 70%;
 }
