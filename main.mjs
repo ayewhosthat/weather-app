@@ -16,10 +16,38 @@ page4.style.display = 'none';
 
 // we let the default display temperature to be celsius, so we set the farenheit boxes to be 'invisible'
 // when the user toggles the switch, we switch the visibility of farenheit/celsius boxes
+const celsius = document.querySelectorAll('.c');
 const farenheit = document.querySelectorAll('.f');
-for (const elem of farenheit) {
-    elem.style.display = 'none';
+
+function hideUnit(unit) {
+    if (unit === 'C') {
+        for (const elemC of celsius) {
+            elemC.style.display = 'none';
+        }
+        for (const elemF of farenheit) {
+            elemF.style.display = 'block';
+        }
+    } else {
+        for (const elemF of farenheit) {
+            elemF.style.display = 'none';
+        }
+        for (const elemC of celsius) {
+            elemC.style.display = 'block';
+        }
+    }
 }
+
+hideUnit('F'); // hide farenheit units
+
+// add event listener to checkbox that fires every time the checkbox is clicked
+const toggleSwitch = document.getElementById('toggle-switch')
+toggleSwitch.addEventListener('click', () => {
+    if (toggleSwitch.checked) {
+        hideUnit('C');
+    } else {
+        hideUnit('F');
+    }
+})
 
 const moveRight = document.getElementById('move-right');
 moveRight.addEventListener('click', () => {
