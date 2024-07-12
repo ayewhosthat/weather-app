@@ -6,6 +6,7 @@
 html, body {height: 100%; box-sizing: border-box;}
 
 body {
+    background-color: #172554;
     font-family: source-sans;
     margin: 0;
     display: grid;
