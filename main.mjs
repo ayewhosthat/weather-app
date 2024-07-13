@@ -1,5 +1,5 @@
 import { getWeatherData, getWeatherForecast, processTodayWeatherData, process7DayWeather } from "./functions.mjs";
-let currentCity = 'Mississauga';
+let currentCity = 'Lyon';
 let currentPage = 0; // represents the current 'slide' of the hourly section that we're on
 
 // add event listeners and functions to update the carousel to change what hours we can see 
@@ -141,7 +141,7 @@ async function updatePage(city) {
 
     // CURRENT WEATHER
     document.getElementById('current-condition-text').textContent = `Current conditions: ${todayProcessed['current']['condition']}`; // current condition
-    document.getElementById('current-uv').textContent = `UV Index:${todayProcessed['current']['uv']}`; // current uv
+    document.getElementById('current-uv').textContent = `UV Index: ${todayProcessed['current']['uv']}`; // current uv
     document.getElementById('current-humidity').textContent = `Humidity: ${todayProcessed['current']['humidity']}`; // current humidity
     document.getElementById('current-wind').textContent = `Wind: ${todayProcessed['current']['windSpeed']} ${todayProcessed['current']['windDirection']}`;
     document.getElementById('current-temperature-c').textContent = `${todayProcessed['current']['currentTempC']}°C`;
