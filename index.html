@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
     <div class="info-container">
@@ -46,8 +47,10 @@
             </div>
             <div class="searchbar-div">
                 <form id="enter-city">
-                    <input id="search-city" type="search">
-                    <input id="submit-city" type="submit">
+                    <div class="search">
+                        <span class="search-icon material-symbols-outlined">search</span>
+                        <input id="search-city" placeholder="city OR city, country" type="search">
+                    </div>
                 </form>
             </div>
             <div></div>

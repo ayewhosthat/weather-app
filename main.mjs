@@ -110,10 +110,8 @@ const hourlyBoxes = document.querySelectorAll('.hourly-item');
 async function updatePage(city) {
     const todaysData = await getWeatherData(city);
     const todayProcessed = processTodayWeatherData(todaysData);
-    console.log(todayProcessed);
     const weeklyData = await getWeatherForecast(city);
     const weeklyProcessed = process7DayWeather(weeklyData);
-    console.log(weeklyProcessed);
 
     // now time to update the DOM elements
     // DAILY WEATHER
@@ -154,3 +152,18 @@ async function updatePage(city) {
     icon.src = todayProcessed['current']['icon'];
 }
 updatePage(currentCity);
+
+// add event listener to call updatePage whenever we submit the form
+const cityForm = document.getElementById('enter-city');
+const searchIcon = document.querySelector('.search-icon');
+const searchBar = document.getElementById('search-city');
+cityForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const city = searchBar.value;
+    if (city === '') {
+        alert('Please enter a city first');
+    } else {
+        currentCity = city;
+        updatePage(currentCity);
+    }
+})

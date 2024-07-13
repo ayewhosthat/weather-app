@@ -160,10 +160,6 @@ img {
     padding-right: 24px;
 }
 
-#search-city {
-    width: 100%;
-}
-
 #toggle-switch {
     align-self: center;
     appearance: none;
@@ -198,4 +194,27 @@ img {
 
 #toggle-switch:checked::after {
     left: 70%;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    border-radius: 28px;
+    padding: 4px 14px;
+    background-color: #cbd5e1;
+}
+
+#search-city {
+    width:100%;
+    margin-left: 14px;
+    font-size: 14px;
+    font-family: source-sans, sans-serif;
+    outline: none;
+    background: transparent;
+    border: none;
+}
+
+.search-icon {
+    color: black;
+    cursor: pointer;
 }
