@@ -136,6 +136,7 @@ async function updatePage(city) {
         box.querySelector('#timeOfDay').textContent = `${hour['time']}`;
         box.querySelector('#hourly-temp-c').textContent = `${hour['tempC']}°C`;
         box.querySelector('#hourly-temp-f').textContent = `${hour['tempF']}°F`;
+        box.querySelector('#hourly-condition').src = hour['icon'];
     }
 
     // CURRENT WEATHER
