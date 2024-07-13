@@ -43,7 +43,7 @@ function processTodayWeatherData(data) {
     currentWeather['windSpeed'] = data['current']['wind_kph'] + ' km/h'
     currentWeather['windDirection'] = data['current']['wind_dir']
     currentWeather['cityName'] = data['location']['name']
-    currentWeather['date'] = Date(data['location']['localtime']).toString().split(' ').slice(0, 3).join(' ')
+    currentWeather['date'] = new Date(data['location']['localtime']).toUTCString().split(' ').slice(0, 3).join(' ')
     currentWeather['time'] = dateObject.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
     currentWeather['icon'] = data['current']['condition']['icon'];
 
