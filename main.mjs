@@ -151,13 +151,9 @@ async function updatePage(city) {
     const icon = document.getElementById('condition-image');
     icon.src = todayProcessed['current']['icon'];
 }
-updatePage(currentCity);
+updatePage(currentCity); // loading initial information
 
-// add event listener to call updatePage whenever we submit the form
-const cityForm = document.getElementById('enter-city');
-const searchIcon = document.querySelector('.search-icon');
-const searchBar = document.getElementById('search-city');
-cityForm.addEventListener('submit', (e) => {
+function getCityThenUpdatePage(e) {
     e.preventDefault();
     const city = searchBar.value;
     if (city === '') {
@@ -166,4 +162,15 @@ cityForm.addEventListener('submit', (e) => {
         currentCity = city;
         updatePage(currentCity);
     }
+}
+
+// add event listener to call updatePage whenever we submit the form
+const cityForm = document.getElementById('enter-city');
+const searchIcon = document.querySelector('.search-icon');
+const searchBar = document.getElementById('search-city');
+cityForm.addEventListener('submit', (e) => {
+    getCityThenUpdatePage(e);
+})
+searchIcon.addEventListener('click', (e) => {
+    getCityThenUpdatePage(e);
 })
