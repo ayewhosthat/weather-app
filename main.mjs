@@ -125,9 +125,11 @@ async function updatePage(city) {
         box.querySelector('#low-c').textContent = `Lo: ${day['minTempC']}°C`;
         box.querySelector('#high-f').textContent = `Hi: ${day['maxTempF']}°F`;
         box.querySelector('#low-f').textContent = `Lo: ${day['minTempF']}°F`;
+        const dailyCondition = box.querySelector('#daily-condition');
+        dailyCondition.src = day['icon'];
     }
 
-    // WEEKLY WEATHER
+    // HOURLY WEATHER
     for (let j = 0; j < hourlyBoxes.length; j++) {
         const hour = todayProcessed['hourly'][j];
         const box = hourlyBoxes[j];
@@ -147,5 +149,7 @@ async function updatePage(city) {
     document.getElementById('feelslike-current-f').textContent = `Feels like ${todayProcessed['current']['feelsLikeF']}°F`;
     document.getElementById('location').textContent = `${todayProcessed['current']['cityName']}`;
     document.getElementById('current-time').textContent = `${todayProcessed['current']['date']}, ${todayProcessed['current']['time']}`;
+    const icon = document.getElementById('condition-image');
+    icon.src = todayProcessed['current']['icon'];
 }
 updatePage(currentCity);

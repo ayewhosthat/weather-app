@@ -20,9 +20,9 @@ body {
     height: 100%;
 }
 
-/* .info-container {
-    height: 25%;
-} */
+img {
+    height: 100%;
+}
 
 .daily {
     min-height: 190px;
@@ -38,6 +38,7 @@ body {
     min-height: 190px;
     display: grid;
     grid-template-columns: 1fr 6fr;
+    margin-top: 75px;
 }
 
 #page-1, #page-2, #page-3, #page-4 {
@@ -138,9 +139,13 @@ body {
     grid-template-rows: 6fr 1fr;
 }
 
-.left > div {
-    display: flex;
-    justify-content: flex-start;
+.current-condition-img {
+    display: grid;
+    grid-template-rows: 1fr 1fr;    
+}
+
+#current-condition-text {
+    margin-left: 24px;
 }
 
 .right {
@@ -152,6 +157,7 @@ body {
 .right > div {
     display: flex;
     justify-content: flex-end;
+    padding-right: 24px;
 }
 
 #search-city {
