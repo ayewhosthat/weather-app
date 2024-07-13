@@ -1,5 +1,5 @@
 import { getWeatherData, getWeatherForecast, processTodayWeatherData, process7DayWeather } from "./functions.mjs";
-let currentCity = 'Barrie';
+let currentCity = 'Mississauga';
 let currentPage = 0; // represents the current 'slide' of the hourly section that we're on
 
 // add event listeners and functions to update the carousel to change what hours we can see 
@@ -113,6 +113,7 @@ async function updatePage(city) {
     console.log(todayProcessed);
     const weeklyData = await getWeatherForecast(city);
     const weeklyProcessed = process7DayWeather(weeklyData);
+    console.log(weeklyProcessed);
 
     // now time to update the DOM elements
     // DAILY WEATHER
