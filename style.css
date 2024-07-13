@@ -57,6 +57,7 @@ img {
 
 #hourly-weather {
     justify-self: center;
+    align-self: end;
 }
 
 .text {
@@ -69,6 +70,7 @@ img {
 
 .navigation {
     justify-self: center;
+    align-self: start;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
