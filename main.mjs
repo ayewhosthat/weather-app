@@ -1,5 +1,5 @@
 import { getWeatherData, getWeatherForecast, processTodayWeatherData, process7DayWeather } from "./functions.mjs";
-let currentCity = 'London';
+let currentCity = 'Barrie';
 let currentPage = 0; // represents the current 'slide' of the hourly section that we're on
 
 // add event listeners and functions to update the carousel to change what hours we can see 
@@ -105,23 +105,34 @@ for (let i = 0; i < listOfDots.length; i++) {
 }
 
 const dailyBoxes = document.querySelectorAll('.daily-weather');
+const hourlyBoxes = document.querySelectorAll('.hourly-item');
 
 async function updatePage(city) {
     const todaysData = await getWeatherData(city);
     const todayProcessed = processTodayWeatherData(todaysData);
+    console.log(todayProcessed);
     const weeklyData = await getWeatherForecast(city);
-    const weeklyProcesssed = process7DayWeather(weeklyData);
+    const weeklyProcessed = process7DayWeather(weeklyData);
 
     // now time to update the DOM elements
     // DAILY WEATHER
     for (let i = 0; i < dailyBoxes.length; i++) {
-        const day = weeklyProcesssed[i];
+        const day = weeklyProcessed[i];
         const box = dailyBoxes[i];
         box.querySelector('.dayofweek').textContent = `${day['dayOfWeek']}`;
         box.querySelector('#high-c').textContent = `Hi: ${day['maxTempC']}°C`;
         box.querySelector('#low-c').textContent = `Lo: ${day['minTempC']}°C`;
         box.querySelector('#high-f').textContent = `Hi: ${day['maxTempF']}°F`;
         box.querySelector('#low-f').textContent = `Lo: ${day['minTempF']}°F`;
+    }
+
+    // WEEKLY WEATHER
+    for (let j = 0; j < hourlyBoxes.length; j++) {
+        const hour = todayProcessed['hourly'][j];
+        const box = hourlyBoxes[j];
+        box.querySelector('#timeOfDay').textContent = `${hour['time']}`;
+        box.querySelector('#hourly-temp-c').textContent = `${hour['tempC']}°C`;
+        box.querySelector('#hourly-temp-f').textContent = `${hour['tempF']}°F`;
     }
 
     // CURRENT WEATHER
