@@ -143,7 +143,7 @@ img {
 
 .current-condition-img {
     display: grid;
-    grid-template-rows: 1fr 1fr;    
+    grid-template-rows: 1fr 1fr;     
 }
 
 #current-condition-text {
