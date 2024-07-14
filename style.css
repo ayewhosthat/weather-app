@@ -191,7 +191,7 @@ img {
 }
 
 #toggle-switch:checked {
-    background-color: rgb(32, 189, 32);
+    background-color: rgb(64, 172, 214);
 }
 
 #toggle-switch:checked::after {
